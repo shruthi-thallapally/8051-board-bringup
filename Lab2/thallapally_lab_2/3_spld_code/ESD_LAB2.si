@@ -1,0 +1,19 @@
+Name     ESD_lab2;
+PartNo   00;
+Date     28-09-2023;
+Revision 01;
+Designer Shruthi;
+Company  University of Colorado Boulder;
+Assembly None;
+Location ;
+Device   g16v8a;
+
+
+ORDER: A15, %2, PSEN, %2, READ, %2, CSPERIPH; 
+
+
+VECTORS:
+11**
+10**
+01**
+00**

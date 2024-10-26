@@ -1,0 +1,79 @@
+A51 MACRO ASSEMBLER  LED_BLINK                                                            09/29/2023 15:44:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\LED_BLINK.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE LED_BLINK.asm SET(SMALL) DEBUG PRINT(.\Listings\LED_BLINK.lst) OBJECT(.
+                      \Objects\LED_BLINK.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 02000E            2             LJMP MAIN
+                       3             
+000B                   4     ORG 000BH
+000B 02003C            5             LJMP TIMER0_INTERRUPT
+                       6     
+                       7     
+000E                   8     MAIN:
+000E 7400              9     MOV A,#00H
+0010 F590             10     MOV P1,A
+0012 758901           11     MOV TMOD,#00000001B
+0015                  12     DELAY:
+0015 C28D             13     CLR TF0
+0017 C28C             14     CLR TR0
+0019 7A05             15     MOV R2,#5D
+001B                  16     LOOP:
+001B 758C00           17     MOV TH0,#0000H
+001E 758A00           18     MOV TL0,#0000H
+0021 D28C             19     SETB TR0
+0023                  20     HERE: 
+0023 308DFD           21     JNB TF0, HERE
+0026 C28D             22     CLR TF0
+0028 C28C             23     CLR TR0
+002A DAEF             24     DJNZ R2,LOOP
+002C 75A882           25     MOV IE,#82H
+002F 758CE8           26     MOV TH0,#0E8H
+0032 758AB5           27     MOV TL0,#0B5H
+0035 D28C             28     SETB TR0
+0037                  29     HERE2: 
+                      30     
+0037 308DFD           31     JNB TF0, HERE2
+003A 80D9             32     SJMP DELAY
+                      33     
+                      34     
+003C                  35     TIMER0_INTERRUPT:
+003C D290             36      SETB P1.0
+003E B291             37      CPL P1.1
+0040 C290             38      CLR P1.0
+0042 D28D             39      SETB TF0
+0044 32               40      RETI
+                      41      
+                      42      END
+A51 MACRO ASSEMBLER  LED_BLINK                                                            09/29/2023 15:44:28 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0015H   A   
+HERE . . . . . . .  C ADDR   0023H   A   
+HERE2. . . . . . .  C ADDR   0037H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+LOOP . . . . . . .  C ADDR   001BH   A   
+MAIN . . . . . . .  C ADDR   000EH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER0_INTERRUPT .  C ADDR   003CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

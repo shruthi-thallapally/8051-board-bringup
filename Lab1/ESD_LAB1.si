@@ -1,0 +1,38 @@
+Name     ESD_lab1;
+PartNo   00;
+Date     08-09-2023;
+Revision 01;
+Designer Shruthi;
+Company  University of Colorado Boulder;
+Assembly None;
+Location None;
+Device   g16v8a;
+
+
+ORDER: A15, %2, A14, %2, A13, %2, A12, %2, RD, %2, PSEN, %2, READ, %2, CSPERIPH; 
+
+
+VECTORS:
+111111**
+111110**
+111101**
+111011**
+110111**
+101111**
+011111**
+011110**
+011101**
+011011**
+010111**
+001111**
+100111**
+110011**
+111001**
+111100**
+111010**
+110110**
+101110**
+101101**
+110101**
+011101**
+101011**

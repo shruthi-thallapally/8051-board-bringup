@@ -1,0 +1,26 @@
+Name     ESD_lab2 ;
+PartNo   00 ;
+Date     28-09-2023 ;
+Revision 01 ;
+Designer Shruthi ;
+Company  University of Colorado Boulder ;
+Assembly None ;
+Location  ;
+Device   g16v8a ;
+
+/* *************** INPUT PINS *********************/
+PIN  2   =    A15                     ; /* A15 of 8051 is given as input to SPLD*/ 
+PIN  8   =    PSEN                     ; /*PSEN of 8051 is given as input to SPLD*/ 
+
+/* *************** OUTPUT PINS *********************/
+PIN  18   =     READ                    ; /* Pin 18 is declared as output of SPLD */ 
+PIN  19   =     CSPERIPH                    ; /*Pin 19 is declared as output of SPLD*/ 
+
+/*
+*Logic:
+*/
+
+READ =  PSEN ;		/*output READ is equal to PSEN */
+CSPERIPH = A15 ;		/*output CSPERIPH is equal to A15 */
+
+

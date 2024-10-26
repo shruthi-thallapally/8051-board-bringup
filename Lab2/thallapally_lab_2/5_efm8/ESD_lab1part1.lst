@@ -1,0 +1,77 @@
+AX51 MACRO ASSEMBLER  ESD_LAB1PART1                                                         09/22/23 17:09:36 PAGE     1
+
+
+MACRO ASSEMBLER AX51 V3.15.3.0
+OBJECT MODULE PLACED IN .\ESD_lab1part1.OBJ
+ASSEMBLER INVOKED BY: C:\SiliconLabs\SimplicityStudio\v5\developer\toolchains\keil_8051\9.60\BIN\AX51.exe C:\Users\91912
+                      \SimplicityStudio\v5_workspace\Shruthi_ESD_lab1_part1\ESD_lab1part1.asm ERRORPRINT SET(SMALL,SILAB
+                      S_STARTUP=1) DEBUG MACRO NOMOD51 INCDIR(C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.
+                      3.0//Device/shared/si8051Base;C:/SiliconLabs/SimplicityStudio/v5/developer/sdks/8051/v4.3.0//Devic
+                      e/EFM8BB1/inc) PRINT(.\ESD_lab1part1.lst) COND SYMBOLS PAGEWIDTH(120) PAGELENGTH(65) OBJECT(.\ESD_lab1part1.OBJ) 
+
+LOC    OBJ             LINE     SOURCE
+
+000000                    1     ORG 0000H
+000000 75F00A             2     MOV B,#0AH       
+000003 7493               3     MOV A,#93H               
+000005 F520               4     MOV 20H,A                
+000007 F521               5     MOV 21H,A                
+000009 85F022             6     MOV 22H,B                
+00000C E5F0               7     MOV A,B                  
+00000E 601E               8     JZ ERROR_DIVISOR_ZERO            
+000010 33                 9     RLC A                    
+000011 4020              10     JC ERROR_8BIT_EXCEED
+000013 33                11     RLC A                    
+000014 401D              12     JC ERROR_8BIT_EXCEED             
+000016 C3                13     CLR C                    
+000017 F5F0              14     MOV B,A                  
+000019 7800              15     MOV R0,#0H               
+00001B E520              16     MOV A,20H                
+                         17     
+00001D                   18     DIVISIONLOOP:    
+00001D F9                19     MOV R1,A                 
+00001E 95F0              20     SUBB A,B                 
+000020 4003              21     JC DIVISIONEND   
+000022 08                22     INC R0                   
+000023 80F8              23     SJMP DIVISIONLOOP  
+                         24     
+000025                   25     DIVISIONEND:     
+                         26     
+000025 8824              27     MOV 24H,R0               
+000027 8925              28     MOV 25H,R1               
+000029 753000            29     MOV 30H,#00H     
+00002C 800A              30     SJMP ENDLOOP     
+                         31     
+                         32     
+00002E                   33     ERROR_DIVISOR_ZERO:              
+00002E 753001            34     MOV 30H,#01H     
+000031 8005              35     SJMP ENDLOOP     
+                         36     
+000033                   37     ERROR_8BIT_EXCEED:               
+000033 753002            38     MOV 30H,#02H     
+000036 8000              39     SJMP ENDLOOP     
+                         40     
+000038                   41     ENDLOOP:
+000038 80FE              42     SJMP ENDLOOP     
+                         43     
+                         44     END
+AX51 MACRO ASSEMBLER  ESD_LAB1PART1                                                         09/22/23 17:09:36 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                              T Y P E  V A L U E     ATTRIBUTES
+
+B . . . . . . . . . . . . . . . . .  D  ADDR  00F0H     A   
+DIVISIONEND . . . . . . . . . . . .  C  ADDR  0025H     R   SEG=?CO?ESD_LAB1PART1?0
+DIVISIONLOOP. . . . . . . . . . . .  C  ADDR  001DH     R   SEG=?CO?ESD_LAB1PART1?0
+ENDLOOP . . . . . . . . . . . . . .  C  ADDR  0038H     R   SEG=?CO?ESD_LAB1PART1?0
+ERROR_8BIT_EXCEED . . . . . . . . .  C  ADDR  0033H     R   SEG=?CO?ESD_LAB1PART1?0
+ERROR_DIVISOR_ZERO. . . . . . . . .  C  ADDR  002EH     R   SEG=?CO?ESD_LAB1PART1?0
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S).
